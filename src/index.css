@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  /* Base surfaces — near-black navy, not pure black, for a premium HUD feel */
+  --color-base: #070B12;
+  --color-surface: #0E1420;
+  --color-surface-raised: #141C2C;
+  --color-panel-border: #22304A;
+
+  /* Brand + state colors */
+  --color-brand: #D71920;
+  --color-brand-glow: #FF5A4E;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-fault: #EF4444;
+
+  /* Text */
+  --color-ink: #F3F6FA;
+  --color-ink-dim: #8CA0BC;
+  --color-ink-faint: #4C5C74;
+
+  /* Type */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% -10%, rgba(215,25,32,0.16), transparent),
+    radial-gradient(ellipse 60% 50% at 100% 0%, rgba(255,90,78,0.09), transparent);
+  background-attachment: fixed;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-panel-border); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-ink-faint); }
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(20,28,44,0.72), rgba(14,20,32,0.6));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(34,48,74,0.8);
+}
+
+.text-glow {
+  text-shadow: 0 0 12px currentColor;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
